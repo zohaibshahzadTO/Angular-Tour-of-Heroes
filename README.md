@@ -25,3 +25,14 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+# Angular Tutorial Walkthrough
+
+After entering the commands on the command prompt and launching the http://localhost:4200/, we see a page which is called the application shell. The shell is controlled by an Angular component called "AppComponent". Components are the fundamental building blocks of Angular applications. They display data on the screen, listen for user input, and take action based on that input.
+
+The implementation of the shell "AppComponent" is distributed over three files:
+
+<b>- app.component.ts</b> (component class code, written in Typescript)
+<b>- app.component.html</b> (component template written in HTML)
+<b>- app.component.css</b> (components private CSS styles)
