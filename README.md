@@ -36,3 +36,22 @@ The implementation of the shell "AppComponent" is distributed over three files:
 <b>- app.component.ts</b> (component class code, written in Typescript)
 <b>- app.component.html</b> (component template written in HTML)
 <b>- app.component.css</b> (components private CSS styles)
+
+
+# Heroes Component of the App
+
+Viewing the HeroesComponent (heroes.component.ts file), it seems that we can import the "Component" symbol from the Angular core library and annotate the component class with @component.
+
+@Component is a decorator function that specifies the Angular metadata for the component.
+
+The CLI generated three metadata properties:
+
+<b>1.) selector - the components CSS element selector.</b>
+<b>2.) templateUrl - the location of the components template file.</b>
+<b>3.) styleUrls - the location of the components private CSS styles.</b>
+
+The CSS element selector, 'app-heroes', matches the name of the HTML element that identifies this component within a parent component's template.
+
+The ngOnInit is a <b>lifecycle hook</b>. Angular calls <b>ngOnInit</b> shortly after creating a component. Its a good place to put initialization logic.
+
+We should always <b>export</b> the component class so we can <b>import</b> it elsewhere...like in the <b>AppModule</b>.
