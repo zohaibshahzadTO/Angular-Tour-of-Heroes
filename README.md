@@ -72,3 +72,7 @@ Can't bind to 'ngModel' since it isn't a known property of 'input'."
 Although ngModel is a valid Angular directive, it isnt available by default. It belongs to the optional <b>FormsModule</b> and we must opt-in to using it.
 
 # AppModule
+
+Angular needs to know how the pieces of this application fit together and what other files and libraries the app requires. This information is called metadata.
+
+Some of the metadata is in the @Component decorators we added to our component classes that we mentioned earlier. Other critical metadata is in @ngModule decorators. The most important @ngModule decorator annotates the top-level AppModule class. The Angular CLI generated an AppModule class in <b>src/app/app.module.ts</b>. This is where we opt-in to the <b>FormsModule</b>.
