@@ -55,3 +55,20 @@ The CSS element selector, 'app-heroes', matches the name of the HTML element tha
 The ngOnInit is a <b>lifecycle hook</b>. Angular calls <b>ngOnInit</b> shortly after creating a component. Its a good place to put initialization logic.
 
 We should always <b>export</b> the component class so we can <b>import</b> it elsewhere...like in the <b>AppModule</b>.
+
+# Two-Way Data Binding
+
+Users should be able to edit the hero name in an <input> textbox.
+
+The textbox should both display the hero's <b>name</b> property and update that property as the user types. That means data flow from the component class out to the screen and from the screen back to the class.
+
+To automate that data flow, setup a two-way data binding between the <input> form element and the <b>hero.name</b> property.
+
+We do this by using [{ngModel}] which is Angular's two-way binding syntax. However, it seems that when we added that to the <b>heroes.component.html</b> file, the browser stopped working. The error displayed the following:
+
+"Template parse errors:
+Can't bind to 'ngModel' since it isn't a known property of 'input'."
+
+Although ngModel is a valid Angular directive, it isnt available by default. It belongs to the optional <b>FormsModule</b> and we must opt-in to using it.
+
+# AppModule
