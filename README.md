@@ -76,3 +76,13 @@ Although ngModel is a valid Angular directive, it isnt available by default. It 
 Angular needs to know how the pieces of this application fit together and what other files and libraries the app requires. This information is called metadata.
 
 Some of the metadata is in the @Component decorators we added to our component classes that we mentioned earlier. Other critical metadata is in @ngModule decorators. The most important @ngModule decorator annotates the top-level AppModule class. The Angular CLI generated an AppModule class in <b>src/app/app.module.ts</b>. This is where we opt-in to the <b>FormsModule</b>.
+
+# Summary So Far
+
+- You used the CLI to create a second HeroesComponent.
+- You displayed the HeroesComponent by adding it to the AppComponent shell.
+- You applied the UppercasePipe to format the name.
+- You used two-way data binding with the ngModel directive.
+- You learned about the AppModule.
+- You imported the FormsModule in the AppModule so that Angular would recognize and apply the ngModel directive.
+- You learned the importance of declaring components in the AppModule and appreciated that the CLI declared it for you.
