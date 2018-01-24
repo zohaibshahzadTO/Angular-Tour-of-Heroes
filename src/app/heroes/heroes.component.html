@@ -1,3 +1,16 @@
+<h2>My Heroes</h2>
+<ul class="heroes">
+
+  <!--*ngFor is Angulars repeater directive. It repeats the host element for each
+  element in a list -->
+  <li *ngFor="let hero of heroes">
+    <span class="badge">{{hero.id}}</span> {{hero.name}}
+  </li>
+</ul>
+
+
+
+
 <!--Updated the binding in the template to announce the hero's component-name
 and show both id and name in a details layout like this: -->
 
