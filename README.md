@@ -34,7 +34,9 @@ After entering the commands on the command prompt and launching the http://local
 The implementation of the shell "AppComponent" is distributed over three files:
 
 <b>- app.component.ts</b> (component class code, written in Typescript)
+
 <b>- app.component.html</b> (component template written in HTML)
+
 <b>- app.component.css</b> (components private CSS styles)
 
 
@@ -47,7 +49,9 @@ Viewing the HeroesComponent (heroes.component.ts file), it seems that we can imp
 The CLI generated three metadata properties:
 
 <b>1.) selector - the components CSS element selector.</b>
+
 <b>2.) templateUrl - the location of the components template file.</b>
+
 <b>3.) styleUrls - the location of the components private CSS styles.</b>
 
 The CSS element selector, 'app-heroes', matches the name of the HTML element that identifies this component within a parent component's template.
