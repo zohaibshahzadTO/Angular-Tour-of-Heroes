@@ -155,3 +155,51 @@ We'll use the Angular CLI to generate a new component named <b>hero-detail</b>.
       <b>ng generate component hero-detail</b>
 
 The command scaffolds the HeroDetailComponent files and declares the component in AppModule.
+
+
+........
+
+
+# Show the HeroDetailComponent
+
+The HeroesComponent is still a master/detail view.
+
+It used to display the hero details on its own, before you cut that portion of the template. Now it will delegate to the HeroDetailComponent.
+
+The two components will have a parent/child relationship. The parent HeroesComponent will control the child HeroDetailComponent by sending it a new hero to display whenever the user selects a hero from the list.
+
+You won't change the HeroesComponent class but you will change its template.
+
+# Updating the HeroesComponent template
+
+The HeroDetailComponent selector is 'app-hero-detail'. We'll add an <app-hero-detail> element near the bottom of the HeroesComponent template, where the hero detail view used to be.
+
+Then we'll bind the HeroesComponent.selectedHero to the element's hero property like this.
+
+  <b><app-hero-detail [hero]="selectedHero"></app-hero-detail></b>
+
+[hero]="selectedHero" is an Angular property binding. It's a one way data binding from the <b>selectedHero</b> property of the HeroComponent to the <b>hero</b> property of the target element, which maps to the <b>hero</b> property of the <b>HeroDetailComponent</b>.
+
+Now when the user clicks a hero in the list, the <b>selectedHero</b> changes. When the <b>selectedHero</b> changes, the property binding updates hero and the <b>HeroDetailComponent</b> displays the new hero.
+
+# What's Changed?
+
+As before, whenever a user clicks on a hero name, the hero detail appears below the hero list. Now the HeroDetailComponent is presenting those details instead of the HeroesComponent.
+
+Refactoring the original HeroesComponent into two components yields benefits, both now and in the future:
+
+  - We simplified the HeroesComponent by reducing its responsibilities.
+
+  - We can evolve the HeroDetailComponent into a rich hero editor without touching the parent HeroesComponent.
+
+  - We can evolve the HeroesComponent without touching the hero detail view.
+
+  - We can re-use the HeroDetailComponent in the template of some future component.
+
+# Summary
+
+- We created a separate, reusable HeroDetailComponent.
+
+- We used a property binding to give the parent HeroesComponent control over the child HeroDetailComponent.
+
+- We used the @Input decorator to make the hero property available for binding by the external HeroesComponent.
