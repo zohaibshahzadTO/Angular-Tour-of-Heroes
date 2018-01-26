@@ -136,3 +136,22 @@ onSelect() is a HeroesComponent method that you're about to write. Angular calls
 - Used *ngIf* to conditionally include or exclude a block of HTML.
 
 - We can toggle a CSS style class with a class binding.
+
+
+# Master / Detail Components
+
+At the moment, the HeroesComponent displays both the list of heroes and the selected hero's details.
+
+Keeping all features in one component as the application grows will not be maintainable. You'll want to split up large components into smaller sub-components, each focused on a specific task or workflow.
+
+In this section, we'll take the first step in that direction by moving the hero details into a separate, reusable HeroDetailsComponent.
+
+The HeroesComponent will only present the list of heroes. The HeroDetailsComponent will present details of a selected hero.
+
+# Make the HeroDetailComponent
+
+We'll use the Angular CLI to generate a new component named <b>hero-detail</b>.
+
+      <b>ng generate component hero-detail</b>
+
+The command scaffolds the HeroDetailComponent files and declares the component in AppModule.

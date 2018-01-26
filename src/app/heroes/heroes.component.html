@@ -13,30 +13,31 @@
 
 
 
-<!--Updated the binding in the template to announce the hero's component-name
-and show both id and name in a details layout like this: -->
+<!--  Updated the binding in the template to announce the hero's component-name
+  and show both id and name in a details layout like this:
 
-<div *ngIf="selectedHero">
+  <div *ngIf="selectedHero">
 
-  <h2>{{ hero.name | uppercase }} Details</h2>
-  <div><span>id: </span>{{hero.id}}</div>
-  <div><span>name: </span>{{hero.name}}</div>
+    <h2>{{ hero.name | uppercase }} Details</h2>
+    <div><span>id: </span>{{hero.id}}</div>
+    <div><span>name: </span>{{hero.name}}</div>
 
-<!--Users should be able to edit the hero name in an <input> textbox.
-The textbox should both display the hero's name property and update that
-property as the user types. That means data flow from the component class
-out to the screen back to the class.
+  Users should be able to edit the hero name in an <input> textbox.
+  The textbox should both display the hero's name property and update that
+  property as the user types. That means data flow from the component class
+  out to the screen back to the class.
 
-To automate the data flow, we need to setup a two-way data binding between
-the <input> form element and the hero.name property.-->
-  <div>
-    <label>name:
-      <input [(ngModel)]="selectedHero.name" placeholder="name">
-    </label>
+  To automate the data flow, we need to setup a two-way data binding between
+  the <input> form element and the hero.name property.
+    <div>
+      <label>name:
+        <input [(ngModel)]="selectedHero.name" placeholder="name">
+      </label>
+    </div>
+
   </div>
 
-</div>
-<!--[{ngModel}] is Angulars two-way data binding syntax. Shown above
-it binds the hero.name property to the HTML textbox so that data can dlow in
-both directions: from the hero.name property to the textbox, and from the textbox
-back to the hero.name.-->
+  [{ngModel}] is Angulars two-way data binding syntax. Shown above
+  it binds the hero.name property to the HTML textbox so that data can dlow in
+  both directions: from the hero.name property to the textbox, and from the textbox
+  back to the hero.name.-->
