@@ -105,4 +105,34 @@ We then implement Angular's repeater directive, <b>ngFor</b> into the <li> eleme
 
 # Styling the Heroes
 
-Of course we also want to make the heroes list attractive and it should respond visually when users hover over and select a hero from the list. Earlier in this project, we set the basic styles for the entire application (app.component.css), however that stylesheet didnt include styles for the list of heroes.
+Of course we also want to make the heroes list attractive and it should respond visually when users hover over and select a hero from the list. Earlier in this project, we set the basic styles for the entire application (app.component.css), however that stylesheet didn't include styles for the list of heroes.
+
+What we can do is define private styles for a specific component and keep everything a component needs -- the code, the HTML, and the CSS --together in one place.
+
+This approach makes it easier to re-use the component somewhere else and deliver the component's intended appearance even if the global styles are different. We define private styles either inline in the <b>@Component.styles</b> array or as stylesheet file(s) identified in the <b>@Component.styleUrls</b> array. When the CLI generated the HeroesComponent, it created an empty <b>heroes.component.css</b> stylesheet for the <b>HeroesComponent</b> and pointed to it in <b>@Component.stylesUrls</b> like this.
+
+# Adding a Click Event Binding
+
+When the user clicks a hero in the master list, the component should display the selected hero's details at the bottom of the page. In this section, we'll listen for the hero item click event and update the hero detail.
+
+The following is a click event binding we implemented to the <li> element:
+
+<b>ngFor="let hero of heroes" (click)="onSelect(hero)"</b>
+
+This is an example of Angular's event binding syntax.
+
+The parentheses around "click" tell angular to listen for the <li> element's click event. When the user clicks in the <li>, Angular executes the onSelect(hero) expression.
+
+onSelect() is a HeroesComponent method that you're about to write. Angular calls it with the hero object displayed in the clicked <li>, the same hero defined previously in the *ngFor expression*
+
+# Summary
+
+- The Tour of Heroes app displays a list of heroes in a Master/Detail view.
+
+- The user can select a hero and see that hero's details.
+
+- Used *ngFor* to display a list.
+
+- Used *ngIf* to conditionally include or exclude a block of HTML.
+
+- We can toggle a CSS style class with a class binding.
