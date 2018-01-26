@@ -3,7 +3,9 @@
 
   <!--*ngFor is Angulars repeater directive. It repeats the host element for each
   element in a list -->
-  <li *ngFor="let hero of heroes" (click)="onSelect(hero)">
+  <li *ngFor="let hero of heroes"
+    [class.selected]="hero == selectedHero"
+    (click)="onSelect(hero)">
     <span class="badge">{{hero.id}}</span> {{hero.name}}
   </li>
 </ul>

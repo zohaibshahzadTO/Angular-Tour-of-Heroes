@@ -90,3 +90,19 @@ Some of the metadata is in the @Component decorators we added to our component c
 - You learned about the AppModule.
 - You imported the FormsModule in the AppModule so that Angular would recognize and apply the ngModel directive.
 - You learned the importance of declaring components in the AppModule and appreciated that the CLI declared it for you.
+
+# Displaying the Heroes List
+
+In this section, we expanded on the Tour of Heroes app to display a list of heroes, and allow users to select a hero and display the hero's details. First, we need some heroes to display. Eventually, we'll get them from a remote data server but for now we'll create some mock heroes and pretend they came from the server.
+
+We created a file called <b>mock-heroes.ts</b> in the <b>src/app</b> folder and then define a <b>HEROES</b> constant as an array of ten heroes and export it.
+
+To display the list of heroes at the top of the <b>HeroesComponent</b>, we need to import the HEROES const into the <b>heroes.component.ts</b> and then add a heroes property to the class that exposes these heroes for binding.
+
+Now we open the <b>HeroesComponent</b> template file and add a title called "My Heroes" and create an unordered list and insert an <li> within the <ul> that displays the properties of a hero.
+
+We then implement Angular's repeater directive, <b>ngFor</b> into the <li> element. It essentially repeats the host element for each element in a list.
+
+# Styling the Heroes
+
+Of course we also want to make the heroes list attractive and it should respond visually when users hover over and select a hero from the list. Earlier in this project, we set the basic styles for the entire application (app.component.css), however that stylesheet didnt include styles for the list of heroes.
