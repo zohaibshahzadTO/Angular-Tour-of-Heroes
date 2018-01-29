@@ -203,3 +203,16 @@ Refactoring the original HeroesComponent into two components yields benefits, bo
 - We used a property binding to give the parent HeroesComponent control over the child HeroDetailComponent.
 
 - We used the @Input decorator to make the hero property available for binding by the external HeroesComponent.
+
+
+# Services
+
+The Tour of Heroes HeroesComponent is currently getting and displaying fake data.
+
+After the refactoring, HeroesComponent will be lean and focused on supporting the view. It will also be easier to unit-test with a mock service.
+
+# Why Services
+
+Components shouldn't fetch or save data directly and they certainly shouldn't knowingly present fake data. They should focus on presenting data and delegate data access to a service.
+
+In this section, we'll create a <b>HeroService</b> that all application classes can use to get heroes. Instead of creating that service with <b>new</b>, we'll rely on Angular dependency injection to inject it into the HeroesComponent constructor.
