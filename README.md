@@ -216,3 +216,20 @@ After the refactoring, HeroesComponent will be lean and focused on supporting th
 Components shouldn't fetch or save data directly and they certainly shouldn't knowingly present fake data. They should focus on presenting data and delegate data access to a service.
 
 In this section, we'll create a <b>HeroService</b> that all application classes can use to get heroes. Instead of creating that service with <b>new</b>, we'll rely on Angular dependency injection to inject it into the HeroesComponent constructor.
+
+Services are a great way to share information among classes that don't know each other. You'll create a MessageService and inject it in two places:
+
+<li>1.) In HeroService which uses the service to send a message.</li>
+<li>2.) In MessagesComponent which displays that message.</li>
+
+# @Injectable() Services
+
+The @Injectable() decorator tells Angular that this service might itself have injected dependencies. It doesn't have dependencies now but it will soon. Whether it does or it doesn't, its good practice to keep the decorator.
+
+# Get Hero Data
+
+The HeroService could get hero data from anywhere - a web service, local storage, or a mock data source.
+
+Removing data access from components means you can change your mind about the implementation anytime, without touching any components. They don't know how the service works.
+
+However, for this project, we'll continue to deliver mock heroes.
