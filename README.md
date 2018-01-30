@@ -370,3 +370,23 @@ This template binds directly to the component's messageService.
 The messages will look better when you add the private CSS styles to messages.component.css as listed in one of the "final code review" tabs below.
 
 The browser refreshes and the page displays the list of heroes. Scroll to the bottom to see the message from the HeroService in the message area. Click the "clear" button and the message area disappears.
+
+# Summary
+
+- We refactored data access to the HeroService class.
+
+- We provided the HeroService in the root AppModule so that it can be injected anywhere.
+
+- We used Angular Dependency Injection to inject it into a component.
+
+- We gave the HeroService get data method an asynchronous signature.
+
+- We discovered Observable and the RxJS Observable library.
+
+- We used RxJS of() to return an Observable of mock heroes (Observable<Hero[]>).
+
+- The component's ngOnInit lifecycle hook calls the HeroService method, not the constructor.
+
+- We created a MessageService for loosely-coupled communication between classes.
+
+- The HeroService injected into a component is created with another injected service, MessageService.
