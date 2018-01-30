@@ -344,3 +344,29 @@ Modify the constructor with a parameter that declares a public messageService pr
 The messageService property must be public because you're about to bind to it in the template.
 
 Note: Angular only binds to public component properties.
+
+
+# Binding to the MessageService
+
+We'll replace the CLI-generated MessagesComponent template with the following:
+
+<div ngIf="messageService.messages.length">
+
+  <h2>Messages</h2>
+  <button class="clear"
+          (click)="messageService.clear()">clear</button>
+  <div ngFor='let message of messageService.messages'> {{message}} </div>
+
+</div>
+
+This template binds directly to the component's messageService.
+
+- The ngIf only displays the messages area if there are messages to show.
+
+- An ngFor presents the list of messages in repeated <div> elements.
+
+- An Angular event binding binds the button's click event to MessageService.clear().
+
+The messages will look better when you add the private CSS styles to messages.component.css as listed in one of the "final code review" tabs below.
+
+The browser refreshes and the page displays the list of heroes. Scroll to the bottom to see the message from the HeroService in the message area. Click the "clear" button and the message area disappears.
