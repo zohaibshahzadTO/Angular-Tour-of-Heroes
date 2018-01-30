@@ -390,3 +390,30 @@ The browser refreshes and the page displays the list of heroes. Scroll to the bo
 - We created a MessageService for loosely-coupled communication between classes.
 
 - The HeroService injected into a component is created with another injected service, MessageService.
+
+# Routing
+
+New Requirements for the App we'll be working on:
+
+- Adding a dashboard view.
+- Adding the ability to navigate between the Heroes and Dashboard Views
+- When users click a hero name in either view, navigate to a detail view of the selected hero.
+- When users click a deep link in an email, open the detail view for a particular hero.
+
+# Adding the AppRoutingModule
+
+An Angular best practice is to load and configure the router in a separate, top-level module that is dedicated to routing and imported by the root, AppModule.
+
+By convention, the module class name is AppRoutingModule and it belong in the app-routing.module.ts in the src/app folder.
+
+We'll use the CLI to generate it:
+
+  "ng generate module app-routing --flat --module=app"
+
+Notes: "--flat" puts the file in src/app instead of its own folder
+       "--module=app" tells the CLI to register it in the imports array of the AppModule.
+
+
+You generally dont declare components in a routing module so you can delete the @NgModule.declarations array and delete CommonModule references too.
+
+We'll configure the router with Routes in the RouterModule so import those two symbols from the @angular/router library. Then we'll add an @NgModule.exports array with RouterModule in it. Exporting RouterModule makes router directives available for use in the AppModule components that will need them.
