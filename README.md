@@ -233,3 +233,12 @@ The HeroService could get hero data from anywhere - a web service, local storage
 Removing data access from components means you can change your mind about the implementation anytime, without touching any components. They don't know how the service works.
 
 However, for this project, we'll continue to deliver mock heroes.
+
+
+# Providing the HeroService
+
+We must provide the HeroService in he dependency injection system before Angular can inject it into the HeroesComponent. There are several ways to provide the HeroService: in the HeroComponent, in the AppComponent, in the AppModule. Each option has its pros and cons.
+
+For this project, we'll choose to provide it in the AppModule.
+
+We'll open the AppModule class, import the HeroService and add it to the @NgModule.providers array.
