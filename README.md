@@ -242,3 +242,9 @@ We must provide the HeroService in he dependency injection system before Angular
 For this project, we'll choose to provide it in the AppModule.
 
 We'll open the AppModule class, import the HeroService and add it to the @NgModule.providers array.
+
+The providers array tells Angular to create a single, shared instance of HeroService and inject into any class that asks for it. Now the HeroService is ready to plug into the HeroesComponent.
+
+# Update HeroesComponent
+
+We'll go back to the HeroesComponent class file and deleted the HEROES import and import the HeroService instead. Moreover, we'll replace the definition of the heroes property with a simple declaration.
