@@ -251,8 +251,16 @@ We'll go back to the HeroesComponent class file and deleted the HEROES import an
 
 # Inject the HeroService
 
-Now we'll add a private heroService parameter of type HeroService to the constructor. The parameter simultaneously defines a private heroService property and identifies it as a HeroService injection site. 
+Now we'll add a private heroService parameter of type HeroService to the constructor. The parameter simultaneously defines a private heroService property and identifies it as a HeroService injection site.
 
 When Angular creates a HeroesComponent, the Dependency Injection system sets the heroService parameter to the singleton instance of HeroService.
 
 # Add getHeroes()
+
+Created a function to retrieve the heroes from the service in HeroesComponent class file.
+
+# Call it in ngOnInit
+
+While we could call getHeroes() in the constructor, thats not the best practice. Reserve the constructor for simple initialization such as wiring constructor parameters to properties. The constructor shouldnt do anything. It certainly shouldnt call a function that makes HTTP requests to a remote server as a real data service would.
+
+Instead, call getHeroes() inside the ngOnInit lifecycle hook and let Angular call ngOnInit at an appropriate time after construction a HeroesComponent instance.
