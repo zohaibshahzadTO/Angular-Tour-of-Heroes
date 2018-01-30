@@ -264,3 +264,83 @@ Created a function to retrieve the heroes from the service in HeroesComponent cl
 While we could call getHeroes() in the constructor, thats not the best practice. Reserve the constructor for simple initialization such as wiring constructor parameters to properties. The constructor shouldnt do anything. It certainly shouldnt call a function that makes HTTP requests to a remote server as a real data service would.
 
 Instead, call getHeroes() inside the ngOnInit lifecycle hook and let Angular call ngOnInit at an appropriate time after construction a HeroesComponent instance.
+
+# Observable data
+
+The HeroService.getHeroes() method has a synchronous signature, which implies that the HeroService can fetch heroes synchronously. The HeroesComponent consumes the getHeroes() result as if heroes could be fetched synchronously.
+
+The HeroService must wait for the server to respond, getHeroes() cannot return immediately with hero data, and the browser will not block while the service waits.
+
+HeroService.getHeroes() must have an asynchronous signature of some kind.
+
+It can take a callback. It could return a Promise. It could return an Observable.
+
+In this tutorial, HeroService.getHeroes() will return an Observable in part because it will eventually use the Angular HttpClient.get method to fetch the heroes and HttpClient.get() returns an Observable.
+
+# Observable HeroService
+
+Observable is one of the key classes in the RxJS library.
+
+Later on, we're going to learn that Angular's HttpClient methods return RxJS Observable's. In this project, we'll simulate getting data from the server with the RxJS of() function.
+
+# Subscribe in HeroesComponent
+
+The HeroService.getHeroes method used to return a Hero[]. Now it returns an Observable<Hero[]>.
+
+You'll have to adjust to that difference in HeroesComponent in the getHeroes() method.
+
+Observable.subscribe() is the critical difference.
+
+The previous version assigns an array of heroes to the component's heroes property. The assignment occurs synchronously, as if the server could return heroes instantly or the browser could freeze the UI while it waited for the server's response.
+
+That won't work when the HeroService is actually making requests of a remote server.
+
+The new version waits for the Observable to emit the array of heroes— which could happen now or several minutes from now. Then subscribe passes the emitted array to the callback, which sets the component's heroes property.
+
+This asynchronous approach will work when the HeroService requests heroes from the server.
+
+# Showing Messages
+
+In this section we will:
+
+- add a MessagesComponent that displays app messages at the bottom of the screen.
+
+- create an injectable, app-wide MessageService for sending messages to be displayed
+
+- inject MessageService into the HeroService
+
+- display a message when HeroService fetches heroes successfully.
+
+# Create MessagesComponent
+
+After creating a new component called "MessagesComponent" and its declared in the AppModule, we'll modify the AppComponent template to display the generated MessagesComponent.
+
+# Creating the MessageService
+
+Use the CLI to create the MessageService in src/app. The --module=app option tells the CLI to provide this service in the AppModule.
+
+  "ng generate service message --module=app"
+
+The service exposes its cache of messages and two methods: one to add() a message to the cache and another to clear() the cache.
+
+# Inject it into the HeroService
+
+Re-open the HeroService ands import the MessageService.
+
+Modify the constructor with a parameter that declares a private messageService property. Angular will inject the singleton MessageService into that property when it creates the HeroService.
+
+# Send a message from HeroService
+
+Modify the getHeroes method to send a message when the heroes are fetched.
+
+# Display the message from HeroService
+
+The MessagesComponent should display all messages, including the message sent by the HeroService when it fetches heroes.
+
+Open MessagesComponent and import the MessageService.
+
+Modify the constructor with a parameter that declares a public messageService property. Angular will inject the singleton MessageService into that property when it creates the HeroService.
+
+The messageService property must be public because you're about to bind to it in the template.
+
+Note: Angular only binds to public component properties.
