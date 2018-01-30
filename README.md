@@ -248,3 +248,11 @@ The providers array tells Angular to create a single, shared instance of HeroSer
 # Update HeroesComponent
 
 We'll go back to the HeroesComponent class file and deleted the HEROES import and import the HeroService instead. Moreover, we'll replace the definition of the heroes property with a simple declaration.
+
+# Inject the HeroService
+
+Now we'll add a private heroService parameter of type HeroService to the constructor. The parameter simultaneously defines a private heroService property and identifies it as a HeroService injection site. 
+
+When Angular creates a HeroesComponent, the Dependency Injection system sets the heroService parameter to the singleton instance of HeroService.
+
+# Add getHeroes()
