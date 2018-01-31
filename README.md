@@ -416,4 +416,27 @@ Notes: "--flat" puts the file in src/app instead of its own folder
 
 You generally dont declare components in a routing module so you can delete the @NgModule.declarations array and delete CommonModule references too.
 
-We'll configure the router with Routes in the RouterModule so import those two symbols from the @angular/router library. Then we'll add an @NgModule.exports array with RouterModule in it. Exporting RouterModule makes router directives available for use in the AppModule components that will need them.
+We'll configure the router with Routes in the RouterModule so import those two symbols from the @angular/router library. Then we'll add an @NgModule.exports array with RouterModule in it. Exporting RouterModule makes router directives available for use in the AppModule components that will need them
+
+# Adding Routes
+
+Routes tell the router which view to display when a user clicks a link or pastes a URL into the browser address bar. A typical Angular "Route" has two properties:
+
+1.) "path": a string that matches the URL in the browser address bar.
+2.) "component": the component that the router should create when navigating to this route.
+
+We intend to navigate to the HeroesComponent when the URL is something like: localhost:4200/heroes.
+
+We'll now import the HeroesComponent so we can reference it in a "Route", then define an array of routes with a single "route" to that component. 
+
+Once we've finished setting up, the router will match that URL to path: 'heroes' and display the HeroesComponent.
+
+# RouterModule.forRoot()
+
+We must first initialize the router and start it listening for browser location changes. Add RouterModule to the @NgModule.imports array and configure it with the routes in one step by calling RouterModule.forRoot() within the imports array, like this:
+
+The method is called forRoot() because you configure the router at the application's root level. The forRoot() method supplies the service providers and directives needed for routing, and performs the initial navigation based on the current browser URL.
+
+# Add RouterOutlet
+
+Open the AppComponent template replace the <app-heroes> element with a <router-outlet> element.
