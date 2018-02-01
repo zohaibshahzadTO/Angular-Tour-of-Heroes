@@ -576,4 +576,69 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { HeroService }  from '../hero.service';
 
-Now we'll inject the ActivatedRoute, HeroService, and Location services into the constructor, saving their values in private fields. 
+Now we'll inject the ActivatedRoute, HeroService, and Location services into the constructor, saving their values in private fields.
+
+The <b>ActivatedRoute</b> holds information about the route to this instance of the HeroDetailComponent. This component is interested in the route's bag of parameters extracted from the URL. The "id" parameter is the id of the hero to display.
+
+The <b>HeroService</b> gets hero data from the remote server and this component will use it to get the hero-to-display.
+
+The <b>Location</b> is an Angular service for interacting with the browser. We'll use it later to navigate back to the view that navigate here.
+
+# Extract the id route parameter
+
+In the ngOnInit() lifecycle hook call getHero() and define it as follows:
+
+<b>
+ngOnInit(): void {
+this.getHero();
+}
+
+getHero(): void {
+const id = +this.route.snapshot.paramMap.get('id');
+this.heroService.getHero(id)
+  .subscribe(hero => this.hero = hero);
+}
+</b>
+
+The route.snapshot is a static image of the route information shortly after the component was created.
+
+The paramMap is a dictionary of route parameter values extracted from the URL. The "id" key returns the id of the hero to fetch.
+
+Route parameters are always strings. The JavaScript (+) operator converts the string to a number, which is what a hero id should be.
+
+The browser refreshes and the app crashes with a compiler error. HeroService doesn't have a getHero() method. Add it now.
+
+# Add HeroService.getHero()
+
+Open HeroService and add this getHero() method.
+
+<b>
+getHero(id: number): Observable<Hero> {
+  // Todo: send the message _after_ fetching the hero
+  this.messageService.add(`HeroService: fetched hero id=${id}`);
+  return of(HEROES.find(hero => hero.id === id));
+}
+</b>
+
+Like getHeroes(), getHero() has an asynchronous signature. It returns a mock hero as an Observable, using the RxJS of() function.
+
+You'll be able to re-implement getHero() as a real Http request without having to change the HeroDetailComponent that calls it.
+
+# Find the Way Back
+
+By clicking the browser's back button, you can go back to the hero list or dashboard view, depending upon which sent you to the detail view.
+
+It would be nice to have a button on the HeroDetail view that can do that.
+
+Add a go back button to the bottom of the component template and bind it to the component's goBack() method.
+
+# Summary
+
+<li>We added the Angular router to navigate among different components.</li>
+<li>We turned the AppComponent into a navigation shell with <a> links and a <router-outlet>.</li>
+<li>We configured the router in an AppRoutingModule</li>
+<li>We defined simple routes, a redirect route, and a parameterized route.</li>
+<li>We used the routerLink directive in anchor elements.</li>
+<li>We refactored a tightly-coupled master/detail view into a routed detail view.</li>
+<li>We used router link parameters to navigate to the detail view of a user-selected hero.</li>
+<li>We shared the HeroService among multiple components.</li>
