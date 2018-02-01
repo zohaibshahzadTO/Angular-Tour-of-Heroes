@@ -504,3 +504,76 @@ After the browser refreshes, the router loads the DashboardComponent and the bro
 The user should be able to navigate back and forth between the DashboardComponent and the HeroesComponent by clicking links in the navigation area near the top of the page.
 
 Add a dashboard navigation link to the AppComponent shell template, just above the Heroes link.
+
+After the browser refreshes you can navigate freely between the two views by clicking the links.
+
+# Navigating to Hero Details
+
+The HeroDetailsComponent displays details of a selected hero. At the moment the HeroDetailComponent is only visible at the bottom of the HeroesComponent.
+
+The user should be able to get to these details in three ways:
+
+<li>By clicking a hero in the dashboard.</li>
+<li>By clicking a hero in the heroes list.</li>
+<li>By pasting a "deep link" URL into the browser address bar that identifies the hero to display.</li>
+
+In this section, we'll enable navigation to the HeroDetailComponent and liberate it from the HeroesComponent.
+
+# Delete the hero details from HeroesComponent
+
+When the user clicks a hero item in the HeroesComponent, the app should navigate to the HeroDetailComponent, replacing the heroes list view with the hero detail view. The heroes list view should no longer show hero details as it does now.
+
+Open the HeroesComponent template (heroes/heroes.component.html) and delete the <app-hero-detail> element from the bottom.
+
+Clicking a hero item now does nothing. You'll fix that shortly after you enable routing to the HeroDetailComponent.
+
+# Add a hero detail route
+
+A URL like ~/detail/11 would be a good URL for navigating to the Hero Detail view of the hero whose id is 11.
+
+Open AppRoutingModule and import HeroDetailComponent.
+
+Then add a parameterized route to the AppRoutingModule.routes array that matches the path pattern to the hero detail view.
+
+Note: The colon (:) in the path indicates that :id is a placeholder for a specific hero id.
+
+At this point, all application routes are in place.
+
+# DashboardComponent hero links
+
+The DashboardComponent hero links do nothing at the moment. Now that the router has a route to HeroDetailComponent, fix the dashboard hero links to navigate via the parameterized dashboard route.
+
+We're using Angular interpolation binding within the ngFor repeater to insert the current interation's hero.id into each routerLink.
+
+
+# HeroesComponent hero links
+
+The hero items in the HeroesComponent are <li> elements whose click events are bound to the component's onSelect() method.
+
+Strip the <li> back to just its ngFor, wrap the badge and name in an anchor element (<a>), and add a routerLink attribute to the anchor that is the same as in the dashboard template.
+
+You'll have to fix the private stylesheet (heroes.component.css) to make the list look as it did before. Revised styles are in the final code review at the bottom of this guide.
+
+# Removing Dead Code
+
+While the HeroesComponent class still works, the onSelect() method and selectedHero property are no longer used.
+
+# Routable HeroDetailComponent
+
+Previously, the parent HeroesComponent set the HeroDetailComponent.hero property and the HeroDetailComponent displayed the hero.
+
+  HeroComponent doesn't do that anymore. Now the router creates the HeroDetailComponent in response to a URL such as ~/detail/11.
+
+The HeroDetailComponent needs a new way to obtain the hero-to-display.
+
+<li>Get the route that created it,</li>
+<li>Extract the id from the route</li>
+<li>Acquire the hero with that id from the sever via the HeroService</li>
+
+We'll add the following imports to the Hero-Detail.component.ts file:
+
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { HeroService }  from '../hero.service';
+
+Now we'll inject the ActivatedRoute, HeroService, and Location services into the constructor, saving their values in private fields. 
