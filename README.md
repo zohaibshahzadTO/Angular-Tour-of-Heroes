@@ -463,4 +463,30 @@ Click the link. The address bar updates to /heroes and the list of heroes appear
 
 Routing makes more sense when there are multiples views. So far theres only the heroes view. That being said, we'll add a DashboardComponent using the CLI.
 
-After the CLI generates the files for the DashboardComponent and declares it in the AppModule, we'll replace the default file content
+The CLI generates the files for the DashboardComponent and declares it in the AppModule.
+
+The template presents a grid of hero name links.
+
+- The ngFor repeater creates as many links as are in the component's heroes array.
+
+- The links are styled as colored blocks by the dashboard.component.css.
+
+- The links don't go anywhere yet but they will shortly.
+
+The class is simlar to the HeroesComponent class.
+
+- It defines a heroes array property.
+
+- The constructor expects Angular to inject the HeroService into a private heroService property.
+
+- The ngOnInit() lifecycle hook calls getHeroes.
+
+This getHeroes reduces the number of heroes displayed to four (2nd, 3rd, 4th, and 5th).
+
+# Add the Dashboard Route
+
+To navigate to the dashboard, the router needs an appropriate route. We'll import the DashboardComponent in the AppRoutingModule.
+
+After that, then add a route to the AppRoutingModule.routes array that matches a path to the DashboardComponent.
+
+# Add a Default Route
