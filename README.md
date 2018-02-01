@@ -427,7 +427,7 @@ Routes tell the router which view to display when a user clicks a link or pastes
 
 We intend to navigate to the HeroesComponent when the URL is something like: localhost:4200/heroes.
 
-We'll now import the HeroesComponent so we can reference it in a "Route", then define an array of routes with a single "route" to that component. 
+We'll now import the HeroesComponent so we can reference it in a "Route", then define an array of routes with a single "route" to that component.
 
 Once we've finished setting up, the router will match that URL to path: 'heroes' and display the HeroesComponent.
 
@@ -440,3 +440,27 @@ The method is called forRoot() because you configure the router at the applicati
 # Add RouterOutlet
 
 Open the AppComponent template replace the <app-heroes> element with a <router-outlet> element.
+
+You removed <app-heroes> because you will only display the HeroesComponent when the user navigates to it.
+
+The <router-outlet> tells the router where to display routed views.
+
+Note: The RouterOutlet is one of the router directives that became available to the AppComponent because AppModule imports AppRoutingModule which exported RouterModule.
+
+# Add a Navigation Link (routerLink)
+
+Users shouldn't have to paste a route URL into the address bar. They should be able to click a link to navigate.
+
+We'll add a <nav> element and, within that, an anchor element that, when clicked, triggers navigation to the HeroesComponent.
+
+A routerLink attribute is set to "/heroes", the string that the router matches to the route to HeroesComponent. The routerLink is the selector for the RouterLink directive that turns user clicks into router navigations. It's another of the public directives in the RouterModule.
+
+The browser refreshes and displays the app title and heroes link, but not the heroes list.
+
+Click the link. The address bar updates to /heroes and the list of heroes appears.
+
+# Adding a Dashboard View
+
+Routing makes more sense when there are multiples views. So far theres only the heroes view. That being said, we'll add a DashboardComponent using the CLI.
+
+After the CLI generates the files for the DashboardComponent and declares it in the AppModule, we'll replace the default file content
