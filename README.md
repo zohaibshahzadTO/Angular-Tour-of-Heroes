@@ -490,3 +490,17 @@ To navigate to the dashboard, the router needs an appropriate route. We'll impor
 After that, then add a route to the AppRoutingModule.routes array that matches a path to the DashboardComponent.
 
 # Add a Default Route
+
+When the app starts, the browsers address bar points to the website's root That doesn't match any existing route so the router doesn't navigate anywhere. The space below the <router-outlet> is blank.
+
+To make the app navigate to the dashboard automatically, add the following route to the AppRoutingModule.Routes array.
+
+The route redirects a URL that fully matches the empty path to the route whose path is './dashboard'.
+
+After the browser refreshes, the router loads the DashboardComponent and the browser address bar shows the /dashboard URL.
+
+# Add dashboard link to the shell
+
+The user should be able to navigate back and forth between the DashboardComponent and the HeroesComponent by clicking links in the navigation area near the top of the page.
+
+Add a dashboard navigation link to the AppComponent shell template, just above the Heroes link.
