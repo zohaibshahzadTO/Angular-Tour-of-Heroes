@@ -642,3 +642,36 @@ Add a go back button to the bottom of the component template and bind it to the 
 <li>We refactored a tightly-coupled master/detail view into a routed detail view.</li>
 <li>We used router link parameters to navigate to the detail view of a user-selected hero.</li>
 <li>We shared the HeroService among multiple components.</li>
+
+
+# HTTP
+
+In this last section of the project, we'll add the following data persistence features with help from Angular's HttpClient.
+
+<li>The HeroService gets hero data with HTTP requests.</li>
+<li>Users can add, edit, and delete heroes and save these changes over HTTP.</li>
+<li>Users can search for heroes by name.</li>
+
+# Enable HTTP Services
+
+HttpClient is Angular's mechanism for communicating with a remote server over HTTP.
+
+To make HttpClient available everywhere in the app,
+
+<li>open the root AppModule</li>
+<li>import the HttpClientModule symbol from @angular/common/http,</li>
+<li>add it to the @NgModule.imports array.</li>
+
+# Simulate a Data Server
+
+As mentioned throughout this ReadME, this app mimics communication with a remote data ever by using the <b?In-memory Web API module</b>.
+
+After installing the module, the app will make requests to and receive responses from the HttpClient without knowing that the In-memory Web API is intercepting those requests, applying them to an in-memory data store, and returning simulated responses.
+
+This facility is a great convenience for the tutorial. You won't have to set up a server to learn about HttpClient.
+
+It may also be convenient in the early stages of your own app development when the server's web api is ill-defined or not yet implemented.
+
+Note: the In-memory Web API module has nothing to do with HTTP in Angular.
+
+Now we'll import the InMemoryWebApiModule and the InMemoryDataService class
