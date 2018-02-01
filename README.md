@@ -664,7 +664,7 @@ To make HttpClient available everywhere in the app,
 
 # Simulate a Data Server
 
-As mentioned throughout this ReadME, this app mimics communication with a remote data ever by using the <b?In-memory Web API module</b>.
+As mentioned throughout this ReadME, this app mimics communication with a remote data ever by using the <b>In-memory Web API module</b>.
 
 After installing the module, the app will make requests to and receive responses from the HttpClient without knowing that the In-memory Web API is intercepting those requests, applying them to an in-memory data store, and returning simulated responses.
 
@@ -674,4 +674,6 @@ It may also be convenient in the early stages of your own app development when t
 
 Note: the In-memory Web API module has nothing to do with HTTP in Angular.
 
-Now we'll import the InMemoryWebApiModule and the InMemoryDataService class
+Now we'll import the InMemoryWebApiModule and the InMemoryDataService class and then add the InMemoryWebApiModule to the @NgModule.imports array - after importing the HttpClient, - while configuring it with the InMemoryDataService.
+
+The forRoot() config method takes an InMemoryDataService class that primes the in-memory database.
