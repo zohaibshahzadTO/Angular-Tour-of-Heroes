@@ -99,7 +99,8 @@ We created a file called <b>mock-heroes.ts</b> in the <b>src/app</b> folder and 
 
 To display the list of heroes at the top of the <b>HeroesComponent</b>, we need to import the HEROES const into the <b>heroes.component.ts</b> and then add a heroes property to the class that exposes these heroes for binding.
 
-Now we open the <b>HeroesComponent</b> template file and add a title called "My Heroes" and create an unordered list and insert an <li> within the <ul> that displays the properties of a hero.
+Now we open the <b>HeroesComponent</b> template file and add a title called "My Heroes" and create an unordered list and insert an 
+"li" within the "ul" that displays the properties of a hero.
 
 We then implement Angular's repeater directive, <b>ngFor</b> into the <li> element. It essentially repeats the host element for each element in a list.
 
